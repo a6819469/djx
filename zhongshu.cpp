@@ -1,13 +1,13 @@
 #include<stdio.h>
 
 
-int num=0;//¶¨ÒåÈ«¾Ö±äÁ¿nÓÃÀ´´æ´¢ÖÚÊı
+int num=0;
 
-int sum=0;//¶¨ÒåÒ»¸öÈ«¾Ö±äÁ¿sumÓÃÀ´´æ´¢ÖØÊı
+int sum=0;
 
 int count(int a[],int p,int q)
 
-{//¶¨ÒåÒ»¸öÍ³¼ÆÊı×éÖĞ¼äÊı³öÏÖµÄ´ÎÊı£¬aÎª´ıÍ³¼ÆµÄ¼¯ºÏ£¬²ÎÊıpÎª´ıµİ¹éÊı×éµÚÒ»¸öÊıµÄË÷Òı£¬qÎª´øµİ¹éÊı×é×îºóÒ»¸öÊıµÄË÷Òı
+{
 
   int n=a[(p+q)/2];
 
@@ -15,7 +15,7 @@ int count(int a[],int p,int q)
 
   for(int i=p;i<q;i++)
 
-  { //´Ó´ıÍ³¼ÆÊı×éµÄµÚÒ»¸öÊıµÄË÷Òı¿ªÊ¼Í³¼Æ£¬Ö±µ½q½áÊø
+  { 
 
   if(a[i]==n){
   counts++;
@@ -29,11 +29,11 @@ int count(int a[],int p,int q)
 
 int start(int a[],int p,int q)
 
-{//¶¨ÒåÒ»¸ö·½·¨£¬ÓÃÓÚ·µ»Øµ±Ç°Êı×éµÄÖĞ¼äÊıµÚÒ»´Î³öÏÖÎ»ÖÃµÄË÷Òı,²ÎÊıpÎªµ±Ç°Êı×éµÚÒ»¸öÊıµÄÎ»ÖÃË÷Òı£¬qÎª×îºóÒ»¸öË÷Òı
+{
 
   int x=0;
 
-   //´Óµ±Ç°Êı×éµÄµÚÒ»¸öÊı¿ªÊ¼£¬µ±µÚµÚÒ»´ÎÕÒµ½Óëµ±Ç°Êı×éµÄÖĞ¼äÊıÏàµÈµÄÊı£¬Ìø³öÑ­»·£¬²¢·µ»Øi
+   
    for(int i=p;i<q;i++)
 
 {
@@ -54,17 +54,17 @@ return x;
 
 }
 
-void mode( int a[],int p,int q)//¸Õ¿ªÊ¼µÚÒ»²½Ê±p=0,q=n
+void mode( int a[],int p,int q)
 
 {
 
-    int  tnum=(p+q)/2;//tnumÎªµ±Ç°Êı×éÖĞ¼äÊıµÄË÷Òı
+    int  tnum=(p+q)/2;
 
-    int  tsum=count(a,p,q);//Í³¼ÆÖĞ¼äÊıµÄÖØÊı
+    int  tsum=count(a,p,q);
 
-    int left=start(a,p,q);//ÕÒµ½µ±Ç°Êı×éÖĞ¼äÊıµÚÒ»´Î³öÏÖµÄÎ»ÖÃ£¬¼ÇÂ¼ÏÂÀ´
+    int left=start(a,p,q);
 
-    if(tsum>sum)//Èç¹ûÖĞ¼äÊıµÄÖØÊı´óÓÚsum£¬½«ÖĞ¼äÊı¸³¸ønum
+    if(tsum>sum)
 
 	{
 
@@ -74,7 +74,7 @@ void mode( int a[],int p,int q)//¸Õ¿ªÊ¼µÚÒ»²½Ê±p=0,q=n
 
 	}
 
-    if(q-(left+tsum)>sum)//Èç¹ûµ±Ç°Êı×éÓÒ±ßÔªËØµÄ¸öÊı´óÓÚÖØÊısum,ÄÇÃ´ÓÒ±ß¿ÉÄÜ³öÏÖÖÚÊı£¬ÏòÓÒµİ¹éÑ°ÕÒ
+    if(q-(left+tsum)>sum)
 
 	{
 
@@ -82,7 +82,7 @@ void mode( int a[],int p,int q)//¸Õ¿ªÊ¼µÚÒ»²½Ê±p=0,q=n
 
 	}
 
-     if(left>sum)//Èç¹ûµ±Ç°Êı×é×ó±ßÔªËØµÄ¸öÊı´óÓÚÖØÊısum£¬ÄÇÃ´×ó±ß¿ÉÄÜ³öÏÖÖÚÊı£¬Ïò×óµİ¹éÑ°ÕÒ
+     if(left>sum)
 
 	 { 
 
@@ -92,13 +92,13 @@ void mode( int a[],int p,int q)//¸Õ¿ªÊ¼µÚÒ»²½Ê±p=0,q=n
 
 }
 
-//Ö÷º¯Êı
+
 
 void main()
 
 {
 
-      //int a[]={6,1,2,2,2,3,5};
+      
 
 	int a[100];
 	int count1=0;
@@ -110,9 +110,9 @@ do{
 	count1++;
 	}while((y=getchar())!='\n');
 
-      printf("¸öÊı£º%d\n",count1);
-      printf("Êä³ö½á¹û£º\n");
-     // count<<"ÖÚÊı="<<num<<"    "<<"ÖØÊı="<<sum;
+      printf("ä¸ªæ•°ï¼š%d\n",count1);
+      printf("è¾“å‡ºç»“æœï¼š\n");
+     
 	 
 	  
 	  for(int j=0;j<i;j++){
@@ -122,8 +122,8 @@ do{
 	  }
 	  
 	  mode(a,0,count1+1);
-	  printf("ÖÚÊı£º%d\n",num);
-	  printf("ÖØÊı£º%d\n",sum);
+	  printf("ä¼—æ•°ï¼š%d\n",num);
+	  printf("é‡æ•°ï¼š%d\n",sum);
 
 
 }
