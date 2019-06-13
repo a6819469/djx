@@ -44,7 +44,7 @@ int fg(int n, int i){
 void main(){
 	cout << "输入要变换的数： ";
 	cin >> n ;
-	cout << "输入要变换成的数： ";2
+	cout << "输入要变换成的数： ";
 	cin >> m ;
 	for (int i = 0; i<99; i++){
 		result[i] = 0;
