@@ -1,0 +1,63 @@
+
+ 
+#include <stdio.h>
+#include <string.h>
+ 
+ 
+int total_value[1010]; // 记录不同承重量背包的总价值
+int w[1010]; // 记录不同物品的重量
+int v[1010]; // 记录不同物品的价值
+ 
+ 
+//返回x,y的最大值
+int max(int x, int y)
+{
+    if(x > y)
+        return x;
+    return y;
+}
+ 
+ 
+int main()
+{
+    int t; // 背包的最大承重量
+    int actual_weight; // 背包实际承重
+    int m; // 物品的数量
+    int i, j; // 临时变量
+ 
+    memset(total_value, 0, sizeof(total_value));  //总价值初始化为0
+    printf("请输入背包承重量 物品的数量：\n");
+    scanf("%d %d", &t, &m);  //输入背包最大承重量t、物品的数目m
+    printf("请输入每件物品的重量 价值：\n");
+    for(i = 1; i <= m; i++)
+        scanf("%d %d", &w[i], &v[i]);  //输入m组物品的重量w[i]和价值v[i]
+ 
+    //尝试放置每一个物品
+    //在放入第i个物品前后，检验不同j承重量时，背包的总价值
+    //如果放入第i个物品后比放入前的价值提高了，则修改j承重量背包的价值，否则不变
+    for(i = 1; i <= m; i++)
+        for(j = t; j >= w[i]; j--)
+            total_value[j] = max(total_value[j-w[i]]+v[i], total_value[j]);
+ 
+    // 获取背包的实际承重
+    for(actual_weight = t; actual_weight > 0; actual_weight--)
+        if(total_value[actual_weight] != total_value[actual_weight-1])
+            break;
+ 
+    printf("装入背包的物品\"重量:价值\" ：\n");
+    j = actual_weight;  // 临时记录背包重量
+    for(i = 1; i <= m; i++)
+    {
+        // 如果物品被放入，一定符合这样的条件
+        if(total_value[j] == total_value[j-w[i]] + v[i])
+        {
+            printf("%d:%d\n", w[i], v[i]);
+            j-=w[i];
+        }
+    }
+ 
+    printf("背包最终重量 价值\n");
+    printf("%d %d\n", actual_weight, total_value[actual_weight]);
+    getchar();
+    return 0;
+}
